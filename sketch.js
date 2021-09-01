@@ -46,8 +46,8 @@ function setup() {
   blink.frameDelay = 20;
   eat.frameDelay = 20;
   
-  rope1 = new Rope(5,{x: 100, y: 345})
-  rope2 = new Rope(5,{x:200,y:300});
+  rope1 = new Rope(5,{x: 100, y: 340})
+  rope2 = new Rope(5,{x:200,y:200});
 
   bubble = createSprite(300,400);
   bubble.addImage(bubbleImage);
@@ -63,14 +63,14 @@ function setup() {
   bunny.changeAnimation('blinking');
 
   button = createImg('cut_btn.png');
-  button.position(190,300);
+  button.position(190,200);
   button.size(50,50);
-  //button.mouseClicked(drop);
+  button.mouseClicked(drop2);
 
   button2 = createImg('cut_btn.png');
   button2.position(60,340);
   button2.size(50,50);
- // button2.mouseClicked(drop2);
+  button2.mouseClicked(drop);
 
   fruit = Bodies.circle(300,300,20);
   Matter.Composite.add(rope1.body,fruit);
@@ -115,7 +115,15 @@ function collide(body,sprite)
          }
 }
 
-function drop1()
+
+
+  rope1.show();
+  rope2.show();
+  ground.show();
+  Engine.update(engine);
+}
+
+function drop()
 {
   rope1.break();
   fruit_con.detach();
@@ -127,10 +135,4 @@ function drop2()
   rope2.break();
   fruit_con_2.detach();
   fruit_con_2= null; 
-}
-
-  rope1.show();
-  rope2.show();
-  ground.show();
-  Engine.update(engine);
 }
